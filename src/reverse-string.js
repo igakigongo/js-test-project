@@ -7,8 +7,10 @@ const reverse = (operand) => {
     throw new Error('operand is not a string');
   }
 
-  if (operand.match(/^(\s)*$/)) return operand;
-  if (operand.length === 1) return operand;
+  if (operand.match(/^(\s)*$/) || operand.length === 1) {
+    return operand;
+  }
+
   return operand.split('').reduceRight((a, c) => a + c, '');
 };
 

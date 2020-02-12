@@ -1,13 +1,9 @@
 import reverse from '../src/reverse-string';
 
 it('throws an error if the type is not a string', () => {
-  const reverseAnArrayOperand = () => reverse([]);
-  const reverseAnObjectOperand = () => reverse({});
-  const reverseUndefinedOperand = () => reverse(undefined);
-
-  expect(reverseAnArrayOperand).toThrow(Error);
-  expect(reverseAnObjectOperand).toThrow(Error);
-  expect(reverseUndefinedOperand).toThrow('operand is not a string');
+  expect(() => reverse([])).toThrow(Error);
+  expect(() => reverse({})).toThrow(Error);
+  expect(() => reverse(undefined)).toThrow('operand is not a string');
 });
 
 it('returns empty string if the string is empty', () => {
