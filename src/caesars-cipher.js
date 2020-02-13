@@ -2,9 +2,15 @@
 // A-Z 065 - 090
 // a-z 097 - 122
 
-// eslint-disable-next-line no-extend-native, func-names
-String.prototype.shouldEncode = function () {
-  const code = this.charCodeAt(0);
+/**
+ * Determines if a character should be encoded. Only checks the
+ * first character, it's not useful to pass strings longer than
+ * one character
+ * @param {String} char
+ * @returns bool
+ */
+const shouldEncode = (char) => {
+  const code = char.charCodeAt(0);
   return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
 };
 
@@ -17,7 +23,7 @@ const cipher = (argument, shift) => {
   if ((typeof argument) !== 'string') throw new Error('expected string argument');
 
   return argument.split('').map((char) => {
-    if (char.shouldEncode() === false) {
+    if (shouldEncode(char) === false) {
       return char;
     }
 
